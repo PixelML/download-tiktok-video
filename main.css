@@ -1,5 +1,5 @@
-a.ttdb__button_feed > div > svg,
-a.ttdb__button_swiper_slide > div > svg
+a.dtv__button_feed > div > svg,
+a.dtv__button_swiper_slide > div > svg
 {
     transition: background-color 0.35s, color 0.35s, opacity 1s!important;
     -webkit-transition: background-color 0.35s, color 0.35s, opacity 1s!important;
@@ -7,10 +7,10 @@ a.ttdb__button_swiper_slide > div > svg
     -o-transition: background-color 0.35s, color 0.35s, opacity 1s!important;
 }
 
-a.ttdb__button_feed,
-a.ttdb__button_swiper_slide,
-a.ttdb__button_grid,
-a.ttdb__button_basic-player
+a.dtv__button_feed,
+a.dtv__button_swiper_slide,
+a.dtv__button_grid,
+a.dtv__button_basic-player
 {
     transition: background-color 0.35s, color 0.35s, opacity 1s!important;
     -webkit-transition: background-color 0.35s, color 0.35s, opacity 1s!important;
@@ -23,7 +23,7 @@ a.ttdb__button_basic-player
     outline: none;
 }
 
-a.ttdb__button_browser
+a.dtv__button_browser
 {
     padding: 5px 8px 4px 8px;
     font-weight: bold;
@@ -36,7 +36,7 @@ a.ttdb__button_browser
     position: relative;
 }
 
-a.ttdb__button_browser.loading::after
+a.dtv__button_browser.loading::after
 {
     position: absolute;
     left: 4px;
@@ -44,34 +44,34 @@ a.ttdb__button_browser.loading::after
     content: url("data:image/svg+xml,%3Csvg width='24' height='24' version='1.1' id='L9' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 100 100' enable-background='new 0 0 0 0' xml:space='preserve'%3E%3Cpath fill='rgb(254, 69, 105)' d='M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50'%3E%3CanimateTransform attributeName='transform' attributeType='XML' type='rotate' dur='1s' from='0 50 50' to='360 50 50' repeatCount='indefinite' /%3E%3C/path%3E%3C/svg%3E")!important;
 }
 
-a.ttdb__button_feed.loading,
-a.ttdb__button_swiper_slide.loading,
-a.ttdb__button_grid.loading,
-a.ttdb__button_basic-player.loading,
-a.ttdb__button_browser.loading
+a.dtv__button_feed.loading,
+a.dtv__button_swiper_slide.loading,
+a.dtv__button_grid.loading,
+a.dtv__button_basic-player.loading,
+a.dtv__button_browser.loading
 {
     cursor: progress!important;
 }
 
-a.ttdb__button_grid.loading > span::after
+a.dtv__button_grid.loading > span::after
 {
     content: url("data:image/svg+xml,%3Csvg width='24' height='24' version='1.1' id='L9' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 100 100' enable-background='new 0 0 0 0' xml:space='preserve'%3E%3Cpath fill='white' d='M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50'%3E%3CanimateTransform attributeName='transform' attributeType='XML' type='rotate' dur='1s' from='0 50 50' to='360 50 50' repeatCount='indefinite' /%3E%3C/path%3E%3C/svg%3E")!important;
 }
 
-a.ttdb__button_browser[ttdb_mode="__NEXT"]
+a.dtv__button_browser[dtv_mode="__NEXT"]
 {
     margin-bottom: 10px!important;
     margin-top: -12px!important;
     padding: 4px 8px 6px 8px!important;
 }
 
-a.ttdb__button_browser[ttdb_mode="APP"]
+a.dtv__button_browser[dtv_mode="APP"]
 {
     margin: 10px 0px 10px 0px!important;
 }
 
-a.ttdb__button_feed,
-a.ttdb__button_swiper_slide
+a.dtv__button_feed,
+a.dtv__button_swiper_slide
 {
     text-align: center;
     width: 48px;
@@ -82,7 +82,7 @@ a.ttdb__button_swiper_slide
     margin-bottom: 14px;
 }
 
-a.ttdb__button_swiper_slide
+a.dtv__button_swiper_slide
 {
     position: absolute;
     top: 5px;
@@ -90,7 +90,7 @@ a.ttdb__button_swiper_slide
     z-index: 1;
 }
 
-a.ttdb__button_feed
+a.dtv__button_feed
 {
     padding: 0;
     position: relative;
@@ -108,17 +108,17 @@ a.ttdb__button_feed
     flex-direction: column;
 }
 
-a.ttdb__button_feed:hover
+a.dtv__button_feed:hover
 {
     color: purple;
 }
 
-a.ttdb__button_feed.loading > div
+a.dtv__button_feed.loading > div
 {
     display: none!important;
 }
 
-a.ttdb__button_feed.loading::after
+a.dtv__button_feed.loading::after
 {
     width: 100%;
     height: 100%;
@@ -133,7 +133,7 @@ a.ttdb__button_feed.loading::after
     content: url("data:image/svg+xml,%3Csvg width='24' height='24' version='1.1' id='L9' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 100 100' enable-background='new 0 0 0 0' xml:space='preserve'%3E%3Cpath fill='rgb(254, 69, 105)' d='M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50'%3E%3CanimateTransform attributeName='transform' attributeType='XML' type='rotate' dur='1s' from='0 50 50' to='360 50 50' repeatCount='indefinite' /%3E%3C/path%3E%3C/svg%3E");
 }
 
-a.ttdb__button_grid
+a.dtv__button_grid
 {
 	position: absolute;
 	z-index: 1;
@@ -144,7 +144,7 @@ a.ttdb__button_grid
 	color: rgb(255, 255, 255, 0.75)!important;
 }
 
-a.ttdb__button_grid > span
+a.dtv__button_grid > span
 {
     display: block;
     margin-left: auto;
@@ -155,7 +155,7 @@ a.ttdb__button_grid > span
     width: 18px;
 }
 
-a.ttdb__button_feed > div
+a.dtv__button_feed > div
 {
     width: 100%;
     height: 100%;
@@ -167,7 +167,7 @@ a.ttdb__button_feed > div
     justify-content: center;
 }
 
-a.ttdb__button_feed > div > svg
+a.dtv__button_feed > div > svg
 {
     fill: currentColor;
     width: 55%;
@@ -175,7 +175,7 @@ a.ttdb__button_feed > div > svg
     margin-top: -1px;
 }
 
-a.ttdb__button_swiper_slide > div
+a.dtv__button_swiper_slide > div
 {
     width: 100%;
     height: 100%;
@@ -187,7 +187,7 @@ a.ttdb__button_swiper_slide > div
     justify-content: center;
 }
 
-a.ttdb__button_swiper_slide > div > svg
+a.dtv__button_swiper_slide > div > svg
 {
     fill: currentColor;
     width: 55%;
@@ -195,43 +195,43 @@ a.ttdb__button_swiper_slide > div > svg
     margin-top: -1px;
 }
 
-a.ttdb__button_grid:not(.loading) > span::after
+a.dtv__button_grid:not(.loading) > span::after
 {
     content: '\01F853';
     font-size: 16px!important;
 }
 
-a.ttdb__button_grid.loading > span::after
+a.dtv__button_grid.loading > span::after
 {
     margin-left: -2px;
 }
 
-a.ttdb__button_browser:hover
+a.dtv__button_browser:hover
 {
     color: #fe4569!important;
 	text-decoration: none;
 }
 
-a.ttdb__button_feed:hover > div > svg,
-a.ttdb__button_swiper_slide:hover > div > svg
+a.dtv__button_feed:hover > div > svg,
+a.dtv__button_swiper_slide:hover > div > svg
 {
     color: #fe4569!important;
 }
 
-a.ttdb__button_grid:hover
+a.dtv__button_grid:hover
 {
 	background-color: rgba(19, 19, 19, 0.5);
 	color: rgb(255, 255, 255, 1);
 	text-decoration: none;
 }
 
-div.ttdb__button_basic-player_wrapper
+div.dtv__button_basic-player_wrapper
 {
     margin: 18px auto 10px auto;
     display: none;
 }
 
-div.ttdb__button_basic-player_wrapper > a.ttdb__button_basic-player
+div.dtv__button_basic-player_wrapper > a.dtv__button_basic-player
 {
     padding: 8px 10px 6px 10px;
     border-radius: 4px;
@@ -242,18 +242,18 @@ div.ttdb__button_basic-player_wrapper > a.ttdb__button_basic-player
     position: relative;
 }
 
-div.ttdb__button_basic-player_wrapper > a.ttdb__button_basic-player,
-div.ttdb__button_basic-player_wrapper > a.ttdb__button_basic-player:visited
+div.dtv__button_basic-player_wrapper > a.dtv__button_basic-player,
+div.dtv__button_basic-player_wrapper > a.dtv__button_basic-player:visited
 {
     color: rgba(254, 44, 85, 1.0);
 }
 
-div.ttdb__button_basic-player_wrapper > a.ttdb__button_basic-player:hover
+div.dtv__button_basic-player_wrapper > a.dtv__button_basic-player:hover
 {
     background-color: rgba(254, 44, 85, 0.15)!important;
 }
 
-div.ttdb__button_basic-player_wrapper > a.ttdb__button_basic-player::after
+div.dtv__button_basic-player_wrapper > a.dtv__button_basic-player::after
 {
     content: "🡓";
     position: absolute;
@@ -262,28 +262,28 @@ div.ttdb__button_basic-player_wrapper > a.ttdb__button_basic-player::after
     top: 4px;
 }
 
-div.ttdb__button_basic-player_wrapper > a.ttdb__button_basic-player.loading::after
+div.dtv__button_basic-player_wrapper > a.dtv__button_basic-player.loading::after
 {
     content: url("data:image/svg+xml,%3Csvg width='24' height='24' version='1.1' id='L9' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 100 100' enable-background='new 0 0 0 0' xml:space='preserve'%3E%3Cpath fill='rgba(254, 44, 85, 1.0)' d='M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50'%3E%3CanimateTransform attributeName='transform' attributeType='XML' type='rotate' dur='1s' from='0 50 50' to='360 50 50' repeatCount='indefinite' /%3E%3C/path%3E%3C/svg%3E")!important;
     top: 6px!important;
     left: 6px!important;
 }
 
-div.ttdb__button_basic-player_wrapper.share,
-div.ttdb__button_basic-player_wrapper.share > a {
+div.dtv__button_basic-player_wrapper.share,
+div.dtv__button_basic-player_wrapper.share > a {
     width: 100%;
 }
 
-div.ttdb__button_basic-player_wrapper.share {
+div.dtv__button_basic-player_wrapper.share {
     margin: 0 auto 10px;
     text-align: center;
 }
 
-div.ttdb__button_basic-player_wrapper.share > a {
+div.dtv__button_basic-player_wrapper.share > a {
     width: 90%;
 }
 
-body > div.ttdb_splash-wrapper
+body > div.dtv_splash-wrapper
 {
     transition: bopacity 0.35s!important;;
     -webkit-transition: opacity 0.35s!important;;
@@ -298,7 +298,7 @@ body > div.ttdb_splash-wrapper
     pointer-events: none;
 }
 
-body > div.ttdb_splash-wrapper > div.ttdb_splash-content
+body > div.dtv_splash-wrapper > div.dtv_splash-content
 {
     width: auto;
     margin: 10px auto;
@@ -312,17 +312,17 @@ body > div.ttdb_splash-wrapper > div.ttdb_splash-content
     font-feature-settings: 'tnum';
 }
 
-body > div.ttdb_splash-wrapper > div.ttdb_splash-content.state-success
+body > div.dtv_splash-wrapper > div.dtv_splash-content.state-success
 {
     background-color: #188351e8;
 }
 
-body > div.ttdb_splash-wrapper > div.ttdb_splash-content.state-warn
+body > div.dtv_splash-wrapper > div.dtv_splash-content.state-warn
 {
     background-color: #df5c3ef0;
 }
 
-body > div.ttdb_splash-wrapper > div.ttdb_splash-content.state-error
+body > div.dtv_splash-wrapper > div.dtv_splash-content.state-error
 {
     background-color: #df3e3ef0;
 }
@@ -340,24 +340,24 @@ button.extract div[class*="-DivContainer "]
 
 /* Light mode colors */
 
-html:not([data-theme]) a.ttdb__button_feed,
-html:not([data-theme="dark"]) a.ttdb__button_feed,
-html[data-theme="light"] a.ttdb__button_feed
+html:not([data-theme]) a.dtv__button_feed,
+html:not([data-theme="dark"]) a.dtv__button_feed,
+html[data-theme="light"] a.dtv__button_feed
 {
     background-color: #f1f1f2;
     color: #000;
 }
 
-html:not([data-theme]) a.ttdb__button_feed svg,
-html:not([data-theme="dark"]) a.ttdb__button_feed svg,
-html[data-theme="light"] a.ttdb__button_feed svg
+html:not([data-theme]) a.dtv__button_feed svg,
+html:not([data-theme="dark"]) a.dtv__button_feed svg,
+html[data-theme="light"] a.dtv__button_feed svg
 {
     color: #161823;
 }
 
-html:not([data-theme]) a.ttdb__button_browser,
-html:not([data-theme="dark"]) a.ttdb__button_browser,
-html[data-theme="light"] a.ttdb__button_browser
+html:not([data-theme]) a.dtv__button_browser,
+html:not([data-theme="dark"]) a.dtv__button_browser,
+html[data-theme="light"] a.dtv__button_browser
 {
     background-color: #f1f1f2;
     color: #000;
@@ -365,23 +365,23 @@ html[data-theme="light"] a.ttdb__button_browser
 
 /* Dark mode colors */
 
-html[data-theme="dark"] a.ttdb__button_feed
+html[data-theme="dark"] a.dtv__button_feed
 {
     background-color: #2f2f2f;
     color: #fff;
 }
 
-html[data-theme="dark"] a.ttdb__button_feed:hover
+html[data-theme="dark"] a.dtv__button_feed:hover
 {
     background-color: #252525;
 }
 
-html[data-theme="dark"] a.ttdb__button_feed svg
+html[data-theme="dark"] a.dtv__button_feed svg
 {
     color: #fff;
 }
 
-html[data-theme="dark"] a.ttdb__button_browser
+html[data-theme="dark"] a.dtv__button_browser
 {
     background-color: rgb(41, 41, 41);
     color: #fff;

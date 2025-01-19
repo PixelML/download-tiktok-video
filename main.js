@@ -1,16 +1,16 @@
 (async () =>
 {
-	const TTDB = {}, API = {}, EXPR = {}, UTIL = {}, SPLASH = {};
+	const dtv = {}, API = {}, EXPR = {}, UTIL = {}, SPLASH = {};
 
-	TTDB.timers = {};
-	TTDB.observers = {};
+	dtv.timers = {};
+	dtv.observers = {};
 	
 	/**
 	 * Interval object
 	 * 
 	 * Sets the amount of update attempts that should be done
 	 */
-	TTDB.interval = {
+	dtv.interval = {
 		counter: 50,
 		delay: 250
 	};
@@ -18,7 +18,7 @@
 	/**
 	 * Different item modes (mode="X")
 	 */
-	TTDB.MODE = {
+	dtv.MODE = {
 		FEED: '0',
 		GRID: '1',
 		BROWSER: '2',
@@ -32,9 +32,9 @@
 	 * 
 	 * @param {integer} count 
 	 */
-	TTDB.setInterval = (count) => {
-		if (TTDB.interval.counter < count) {
-			TTDB.interval.counter = count
+	dtv.setInterval = (count) => {
+		if (dtv.interval.counter < count) {
+			dtv.interval.counter = count
 		}
 	};
 	
@@ -44,7 +44,7 @@
 	 * @param  {...any} args 
 	 */
 	const pipe = (...args) => {
-		console.info('[TTDB]', ...args)
+		console.info('[dtv]', ...args)
 	};
 	
 	/**
@@ -218,8 +218,8 @@
 		const wrapper = document.createElement('div');
 		const content = document.createElement('div');
 	
-		wrapper.classList.add('ttdb_splash-wrapper');
-		content.classList.add('ttdb_splash-content');
+		wrapper.classList.add('dtv_splash-wrapper');
+		content.classList.add('dtv_splash-content');
 	
 		content.textContent = '';
 	
@@ -252,7 +252,7 @@
 		const state = options.state ? options.state : 0;
 	
 		if (SPLASH.wrapper && SPLASH.content) {
-			clearTimeout(TTDB.timers.splash);
+			clearTimeout(dtv.timers.splash);
 	
 			if (state === 0 || state === 1) {
 				SPLASH.content.classList.remove('state-warn', 'state-error');
@@ -272,7 +272,7 @@
 				'pointer-events': 'auto'
 			});
 	
-			TTDB.timers.splash = setTimeout(() => {
+			dtv.timers.splash = setTimeout(() => {
 				DOM.setStyle(SPLASH.wrapper, {
 					'opacity': 0,
 					'pointer-events': 'none'
@@ -293,19 +293,19 @@
 	 * Default: `APP` is the main environment (most regions)
 	 * `__NEXT` has a different HTML structure, region-based and maybe obsolete now?
 	 */
-	TTDB.ENV = {
+	dtv.ENV = {
 		APP: Symbol(true),
 		__NEXT: Symbol(true),
 	};
 	
-	TTDB.DEFAULT_ENV = TTDB.ENV.APP;
+	dtv.DEFAULT_ENV = dtv.ENV.APP;
 	
 	/**
 	 * `fetch` headers for requests
 	 * 
 	 * https://developer.mozilla.org/en-US/docs/Web/API/fetch
 	 */
-	TTDB.headers = {
+	dtv.headers = {
 		method: 'GET',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -722,7 +722,7 @@
 			} else {
 				// Attempt download using .blob()
 				// We can't use a subfolder here since this is not using the browser API
-				fetch(url, TTDB.headers).then((t) => {
+				fetch(url, dtv.headers).then((t) => {
 					if (t.ok) {
 						return t.blob().then((b) => {
 							const anchor = document.createElement('a');
@@ -844,12 +844,12 @@
 		/** Basic player (theater view) */
 		BASIC_PLAYER: () => {
 			const wrapper = document.createElement('div');
-			wrapper.classList.add('ttdb__button_basic-player_wrapper');
+			wrapper.classList.add('dtv__button_basic-player_wrapper');
 	
 			/** Create download button */
 			const button = DOM.createButton({
 				content: ['textContent', 'Download'],
-				class: 'ttdb__button_basic-player'
+				class: 'dtv__button_basic-player'
 			});
 	
 			/** Set directly, as this makes it more compatible with dark mode addons */
@@ -878,7 +878,7 @@
 					},
 				})],
 				innerType: 'div',
-				class: 'ttdb__button_swiper_slide'
+				class: 'dtv__button_swiper_slide'
 			});
 	
 			/** Set directly, as this makes it more compatible with dark mode addons */
@@ -894,7 +894,7 @@
 			/** Create download button */
 			return DOM.createButton({
 				content: ['textContent', 'Download'],
-				class: 'ttdb__button_browser'
+				class: 'dtv__button_browser'
 			});
 		},
 		/** Feed items */
@@ -911,7 +911,7 @@
 					]
 				})],
 				innerType: 'div',
-				class: 'ttdb__button_feed'
+				class: 'dtv__button_feed'
 			});
 		},
 		/** Grid items (videos/liked items) */
@@ -919,7 +919,7 @@
 			/** Create download button */
 			return DOM.createButton({
 				content: false,
-				class: 'ttdb__button_grid'
+				class: 'dtv__button_grid'
 			});
 		}
 	};
@@ -930,17 +930,17 @@
 	 * @param {HTMLElement} container 
 	 * @param {string}      env 
 	 */
-	const extractDescriptionId = (container, env = TTDB.ENV.APP) => {
+	const extractDescriptionId = (container, env = dtv.ENV.APP) => {
 		let identifier = null;
 		let extracted = null;
 	
-		if (env === TTDB.ENV.APP) {
+		if (env === dtv.ENV.APP) {
 			const description = container.querySelector('span[class*="-SpanText "]');
 
 			if (description) {
 				extracted = description.parentElement.textContent;
 			}
-		} else if (env === TTDB.ENV.__NEXT) {
+		} else if (env === dtv.ENV.__NEXT) {
 			const metaTitle = container.querySelector('div[class*="video-meta-caption"]');
 
 			if (metaTitle) {
@@ -1013,7 +1013,7 @@
 	 * @param {HTMLElement} element 
 	 */
 	const feedGetActionBar = (item, data) => {
-		return item.querySelector(data.env === TTDB.ENV.APP ?
+		return item.querySelector(data.env === dtv.ENV.APP ?
 			'section[class*="-SectionActionBarContainer"]' :
 			'div[class*="-action-bar"].vertical'
 		);
@@ -1130,7 +1130,7 @@
 	};
 	
 	/** Feed items (`For Your` page etc.) */
-	itemData.extract[TTDB.MODE.FEED] = (data) => {
+	itemData.extract[dtv.MODE.FEED] = (data) => {
 		const videoData = {};
 
 		let itemUser = data.container.querySelector(DOM.multiSelector({
@@ -1163,7 +1163,7 @@
 	};
 	
 	/** Grid items (videos from user page, liked videos etc.) */
-	itemData.extract[TTDB.MODE.GRID] = (data) => {
+	itemData.extract[dtv.MODE.GRID] = (data) => {
 		const videoData = {};
 		const itemLinks = data.container.querySelectorAll('a[href*="com/@"]');
 	
@@ -1188,11 +1188,11 @@
 	};
 	
 	/** Browser items (when opening a video grid item or on the `For You` page) */
-	itemData.extract[TTDB.MODE.BROWSER] = (data) => {
+	itemData.extract[dtv.MODE.BROWSER] = (data) => {
 		const videoData = {};
 		let itemUser = null;
 
-		if (data.env === TTDB.ENV.APP) {
+		if (data.env === dtv.ENV.APP) {
 			/** Get username */
 			itemUser = data.container.querySelector('div[class*="-DivInfoContainer "] a[href*="/@"]');
 
@@ -1262,7 +1262,7 @@
 					pipe('[BROWSER] Extracted from share URLs:', videoData);
 				}
 			}
-		} else if (data.env === TTDB.ENV.__NEXT) {
+		} else if (data.env === dtv.ENV.__NEXT) {
 			// Extract username
 			itemUser = data.container.querySelector('div.user-info a > h2.user-username');
 
@@ -1281,7 +1281,7 @@
 		return videoData;
 	};
 	
-	itemData.extract[TTDB.MODE.BASIC_PLAYER] = (data) => {
+	itemData.extract[dtv.MODE.BASIC_PLAYER] = (data) => {
 		const videoData = {};
 		const parent = data.container.closest('div[class*="-DivLeftContainer "]');
 	
@@ -1612,15 +1612,15 @@
 		setters: {}
 	};
 	
-	itemSetup.setters[TTDB.MODE.BROWSER] = (item, data) => {
+	itemSetup.setters[dtv.MODE.BROWSER] = (item, data) => {
 		let linkContainer = null;
 
-		if (data.env === TTDB.ENV.APP) {
+		if (data.env === dtv.ENV.APP) {
 			linkContainer = document.querySelector(DOM.multiSelector({
 				legacyCopyLink: 'div[class*="-DivCopyLinkContainer"]',
 				newMainContent: 'div[class*="-DivTabMenuContainer"]'
 			}));
-		} else if (data.env === TTDB.ENV.__NEXT) {
+		} else if (data.env === dtv.ENV.__NEXT) {
 			linkContainer = item.querySelector('div.video-infos-container > div.action-container');
 		}
 	
@@ -1632,35 +1632,35 @@
 			const button = createButton.BROWSER();
 			const videoData = itemData.get(item, data);
 	
-			if (data.env === TTDB.ENV.APP) {
+			if (data.env === dtv.ENV.APP) {
 				linkContainer.before(button);
-			} else if (data.env === TTDB.ENV.__NEXT) {
+			} else if (data.env === dtv.ENV.__NEXT) {
 				linkContainer.after(button);
 			}
 			
-			button.setAttribute('ttdb_mode', data.env === TTDB.ENV.__NEXT ? '__NEXT' : 'APP');
+			button.setAttribute('dtv_mode', data.env === dtv.ENV.__NEXT ? '__NEXT' : 'APP');
 
 			downloadHook(button, videoData);
 	
-			if (TTDB.observers.browserObserver) {
-				TTDB.observers.browserObserver.disconnect();
+			if (dtv.observers.browserObserver) {
+				dtv.observers.browserObserver.disconnect();
 			}
 	
 			const callback = (mutationsList) => {
 				for(let mutation of mutationsList) {
 					if (mutation.type === 'childList') {
-						clearTimeout(TTDB.timers.browserObserver);
-						TTDB.timers.browserObserver = setTimeout(() => {
+						clearTimeout(dtv.timers.browserObserver);
+						dtv.timers.browserObserver = setTimeout(() => {
 							downloadHook(button, itemData.get(item, data));
 						}, 100);
 					}
 				}
 			};
 	
-			TTDB.observers.browserObserver = new MutationObserver(callback);
+			dtv.observers.browserObserver = new MutationObserver(callback);
 	
 			// Observe any changes when navigating through items
-			TTDB.observers.browserObserver.observe(item, {
+			dtv.observers.browserObserver.observe(item, {
 				childList: true,
 				subtree: true
 			});
@@ -1671,7 +1671,7 @@
 		return false;
 	};
 	
-	itemSetup.setters[TTDB.MODE.GRID] = (item, data) => {
+	itemSetup.setters[dtv.MODE.GRID] = (item, data) => {
 		item.setAttribute('is-downloadable', 'true');
 	
 		// Create download button
@@ -1690,25 +1690,25 @@
 
 		item.addEventListener('mouseleave', () => {
 			// Clear any active timers on `mouseleave`
-			clearInterval(TTDB.timers.gridAwaitVideoData);
+			clearInterval(dtv.timers.gridAwaitVideoData);
 		});
 	
 		item.addEventListener('mouseenter', () => {
 			if (!button.ttIsProcessed) {
-				clearInterval(TTDB.timers.gridAwaitVideoData);
+				clearInterval(dtv.timers.gridAwaitVideoData);
 
 				let videoData = itemData.get(item, data);
 
 				// No URL was found on the initial attempt
 				if (!videoData.url) {
 					// Check for existing video URLs
-					TTDB.timers.gridAwaitVideoData = setInterval(() => {
+					dtv.timers.gridAwaitVideoData = setInterval(() => {
 						videoData = itemData.get(item, data);
 	
 						// We have a valid video URL — set download data and clear interval
 						if (videoData.url) {
 							setButton(videoData, button);
-							clearInterval(TTDB.timers.gridAwaitVideoData);
+							clearInterval(dtv.timers.gridAwaitVideoData);
 						}
 					}, 20);
 				} else {
@@ -1728,8 +1728,8 @@
 		return true;
 	};
 	
-	itemSetup.setters[TTDB.MODE.FEED] = (item, data) => {
-		const videoPreview = item.querySelector(data.env === TTDB.ENV.APP ?
+	itemSetup.setters[dtv.MODE.FEED] = (item, data) => {
+		const videoPreview = item.querySelector(data.env === dtv.ENV.APP ?
 			':scope > div:first-child' :
 			'div[class*="video-card"] > span[class$="mask"]'
 		);
@@ -1765,7 +1765,7 @@
 	};
 	
 	/** Set up swiper slide item (may be obsolete) */
-	itemSetup.setters[TTDB.MODE.SWIPER_SLIDE] = (item, data) => {
+	itemSetup.setters[dtv.MODE.SWIPER_SLIDE] = (item, data) => {
 		const videoPreview = item.querySelector('img');
 		const videoWrapper = item.querySelector('div[class*="VideoWrapperForSwiper"]');
 		let videoElement = item.querySelector('video');
@@ -1825,7 +1825,7 @@
 	};
 	
 	/** Set up basic player item ("theater" mode) */
-	itemSetup.setters[TTDB.MODE.BASIC_PLAYER] = (item, data) => {
+	itemSetup.setters[dtv.MODE.BASIC_PLAYER] = (item, data) => {
 		let videoElement = item.querySelector('video');
 	
 		if (videoElement) {
@@ -1872,7 +1872,7 @@
 		}
 	};
 
-	itemSetup.setters[TTDB.MODE.SHARE_OVERLAY] = (item, _) => {
+	itemSetup.setters[dtv.MODE.SHARE_OVERLAY] = (item, _) => {
 		const input = item.querySelector('input[value*="/video/"]');
 		item.setAttribute('is-downloadable', 'true');
 
@@ -1926,33 +1926,33 @@
 
 			if (modeElement) {
 				currentMode = modeElement.getAttribute('mode');
-				currentEnvironment = TTDB.ENV.APP;
+				currentEnvironment = dtv.ENV.APP;
 			} else {
 				const classList = item.classList;
 
 				if (classList.contains('video-feed-item') || classList.contains('three-column-item')) {
-					currentMode = TTDB.MODE.GRID;
+					currentMode = dtv.MODE.GRID;
 				} else if (classList.contains('feed-item-content')) {
-					currentMode = TTDB.MODE.FEED;
+					currentMode = dtv.MODE.FEED;
 				} else if (classList.contains('browse-mode') || classList.contains('video-card-big')) {
-					currentMode = TTDB.MODE.BROWSER;
+					currentMode = dtv.MODE.BROWSER;
 				} else if (classList.contains('swiper-slide')) {
-					currentMode = TTDB.MODE.SWIPER_SLIDE;
+					currentMode = dtv.MODE.SWIPER_SLIDE;
 				} else if (item.querySelector('div.tiktok-web-player > video')) {
-					currentMode = TTDB.MODE.BASIC_PLAYER;
+					currentMode = dtv.MODE.BASIC_PLAYER;
 				} else if (item.querySelector('input[value*="/video/"]')) {
-					currentMode = TTDB.MODE.SHARE_OVERLAY;
+					currentMode = dtv.MODE.SHARE_OVERLAY;
 				}
 	
 				if (currentMode !== null) {
-					currentEnvironment = TTDB.ENV.__NEXT;
+					currentEnvironment = dtv.ENV.__NEXT;
 				}
 			}
 
 			if (currentMode) {
 				// Set default environment if nothing has been detected
 				if (currentEnvironment === null) {
-					currentEnvironment = TTDB.DEFAULT_ENV;
+					currentEnvironment = dtv.DEFAULT_ENV;
 				}
 	
 				// Data that we're sending downstream
@@ -1980,35 +1980,35 @@
 	
 	// Check for updates on `scroll`
 	document.addEventListener('scroll', () => {
-		clearTimeout(TTDB.timers.scrollBreak);
+		clearTimeout(dtv.timers.scrollBreak);
 	
-		TTDB.timers.scrollBreak = setTimeout(() => {
-			TTDB.setInterval(20);
+		dtv.timers.scrollBreak = setTimeout(() => {
+			dtv.setInterval(20);
 		}, 250);
 	});
 	
 	// Check for updates on `click`
 	window.addEventListener('click', () => {
-		TTDB.setInterval(10);
+		dtv.setInterval(10);
 	});
 	
 	const observeApp = (container) => {
-		if (TTDB.observers.main) {
-			TTDB.observers.main.disconnect();
+		if (dtv.observers.main) {
+			dtv.observers.main.disconnect();
 		}
 		
-		TTDB.observers.main = new MutationObserver((mutationsList) => {
+		dtv.observers.main = new MutationObserver((mutationsList) => {
 			for(let mutation of mutationsList) {
 				if (mutation.type === 'childList') {
-					clearTimeout(TTDB.timers.appUpdated);
-					TTDB.timers.appUpdated = setTimeout(() => {
-						TTDB.setInterval(15);
+					clearTimeout(dtv.timers.appUpdated);
+					dtv.timers.appUpdated = setTimeout(() => {
+						dtv.setInterval(15);
 					}, 500);
 				}
 			}
 		});
 		
-		TTDB.observers.main.observe(container, {
+		dtv.observers.main.observe(container, {
 			childList: true,
 			subtree: true
 		});
@@ -2023,11 +2023,11 @@
 	} else {
 		let checks = 0;
 	
-		TTDB.timers.appCreationWatcher = setInterval(() => {
+		dtv.timers.appCreationWatcher = setInterval(() => {
 			appContainer = getAppContainer();
 	
 			if (appContainer || checks === 10) {
-				clearInterval(TTDB.timers.appCreationWatcher);
+				clearInterval(dtv.timers.appCreationWatcher);
 	
 				if (appContainer) {
 					observeApp(appContainer);
@@ -2038,11 +2038,11 @@
 	
 	// Tracks and does item checks on the page
 	setInterval(() => {
-		if (TTDB.interval.counter > 0) {
+		if (dtv.interval.counter > 0) {
 			updatePage();
-			TTDB.interval.counter--;
+			dtv.interval.counter--;
 		}
-	}, TTDB.interval.delay);
+	}, dtv.interval.delay);
 	
 	// Create splash elements
 	SPLASH.create();

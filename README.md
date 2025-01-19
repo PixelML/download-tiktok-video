@@ -2,19 +2,32 @@
   <img src="./128.png">
 </p>
 
-<h1 align="center">TikTok Download Buttons</h1>
+<h1 align="center">DownloadTiktok.video</h1>
 
-<p align="center">An addon that adds download buttons to the web version of TikTok</p>
+<p align="center">A free TikTok video downloader extension by AgenticFlow.AI</p>
 
 ---
 
-I made this mostly for my own needs, but it's also published here:
+Download our extension from:
 
 * [Chrome Web Store](https://chrome.google.com/webstore/detail/tiktok-download-buttons/kcnchleajedobajlpgkcinfcdmdnfejd)
+* [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/tiktok-download-buttons/)
 
-* [Add-ons for Firefox](https://addons.mozilla.org/en-US/firefox/addon/tiktok-download-buttons/)
+Or visit [downloadtiktok.video](https://downloadtiktok.video) to use our web version.
 
 ---
+
+## Features
+
+- Download TikTok videos without watermark
+- Custom naming templates
+- Organize downloads in subfolders
+- Works directly on TikTok.com
+- Free to use
+
+## About
+
+DownloadTiktok.video is a free tool created by AgenticFlow.AI to help users download TikTok videos easily and efficiently.
 
 ## Watermarks
 

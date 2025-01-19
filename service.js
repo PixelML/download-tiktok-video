@@ -65,7 +65,7 @@ const fileDownload = (args) => {
 	}
 
 	try {
-		console.log('[TTDB]', 'Attempting download', {
+		console.log('[Download-Tiktok-Video]', 'Attempting download', {
 			filename: `${subFolder ? subFolder : ''}${filename}`,
 			url: url
 		});
@@ -80,7 +80,7 @@ const fileDownload = (args) => {
 		{
 			chrome.downloads.onChanged.addListener((delta) => {
 				if(itemId === delta.id) {
-					console.log('[TTDB]', delta);
+					console.log('[Download-Tiktok-Video]', delta);
 
 					if(delta.endTime || (delta.state && delta.state.current === 'complete')) {
 						// Successful download

@@ -1,0 +1,77 @@
+# Download-Tiktok-Video Extension Rules
+
+## File Organization
+- Background service logic goes in service.js
+- UI/popup related code goes in popup.js and popup.html
+- Content script logic goes in main.js
+- Styles are split between main.css, popup.css, and batch-download.css
+- Firefox port modifications go in .ff_requires directory
+- Build scripts are in .sh files
+
+## Code Style
+- Use tabs for indentation
+- Use single quotes for strings by default
+- Use template literals for complex strings
+- Add JSDoc comments for functions
+- Prefix console logs with '[Download-Tiktok-Video]'
+- Use descriptive variable names
+- Group related functionality into objects (e.g. DownloadTikTokVideo, API, UTIL)
+
+## Architecture
+- Use message passing between content script and background service
+- Background service handles downloads, tabs, and storage
+- Content script handles DOM manipulation and UI
+- Popup handles settings UI and storage
+- Use chrome.storage.local for persistent settings
+- Follow Chrome extension best practices for MV3
+
+## DOM Manipulation
+- Use data attributes for identifying elements
+- Add 'dtv' prefix to custom classes and IDs
+- Use mutation observers to watch for DOM changes
+- Clean up observers when no longer needed
+- Handle both light and dark theme modes
+
+## Download Logic
+- Support both direct downloads and fallback methods
+- Handle download errors gracefully
+- Support custom naming templates
+- Support subfolder organization
+- Follow browser security restrictions
+
+## Browser Compatibility 
+- Support both Chrome and Firefox
+- Use browser polyfills where needed
+- Handle manifest differences between browsers
+- Test on both platforms before release
+
+## Error Handling
+- Use try/catch blocks for risky operations
+- Log errors to console with context
+- Show user-friendly error messages
+- Provide fallback behaviors when possible
+
+## Performance
+- Debounce scroll and click handlers
+- Clean up event listeners when not needed
+- Minimize DOM queries and mutations
+- Use efficient selectors
+
+## Security
+- Sanitize file names and paths
+- Validate user input
+- Follow CSP guidelines
+- Use secure communication methods
+
+## UI/UX
+- Show loading states during operations
+- Provide visual feedback for actions
+- Make buttons and controls obvious
+- Support keyboard navigation
+- Handle both light and dark themes
+
+## Build Process
+- Use shell scripts for builds
+- Generate separate Chrome and Firefox versions
+- Include only necessary files in builds
+- Follow semver for versioning 
